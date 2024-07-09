@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Invoice</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <a class="navbar-brand" href="#">Invoice Management System</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/api/v1/invoices}">Invoice Management</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <h1 class="text-center">Update Invoice</h1>
+            <div class="card-body">
+                <form th:action="@{/api/v1/invoices/{id}(id=${invoice.id})}" th:object="${invoice}" method="POST">
+                    <input type="hidden" th:field="*{id}"/>  <!-- Hidden ID field -->
+                    
+                    <div class="form-group">
+                        <label>Invoice Number</label>
+                        <input type="number" th:field="*{invoice_NO}" class="form-control" placeholder="Enter Invoice Number"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Invoice Date</label>
+                        <div class="input-group">
+                            <input type="date" th:field="*{invoice_Date}" class="form-control" placeholder="Enter Invoice Date"/>
+                            <!-- Display old date -->
+                            <div class="input-group-append">
+                                <span class="input-group-text">Old Date:</span>
+                                <input type="text" class="form-control" th:value="*{invoice_Date}" readonly/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>IT Department</label>
+                        <input type="text" th:field="*{IT_Department}" class="form-control" placeholder="Enter IT Department"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Vendor</label>
+                        <input type="text" th:field="*{vendor}" class="form-control" placeholder="Enter Vendor"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Invoice Amount</label>
+                        <input type="number" th:field="*{invoice_Amount}" class="form-control" placeholder="Enter Invoice Amount"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="month">Month</label>
+                        <select id="month" th:field="*{month}" class="form-control">
+                            <option value="JANUARY">January</option>
+                            <option value="FEBRUARY">February</option>
+                            <option value="MARCH">March</option>
+                            <option value="APRIL">April</option>
+                            <option value="MAY">May</option>
+                            <option value="JUNE">June</option>
+                            <option value="JULY">July</option>
+                            <option value="AUGUST">August</option>
+                            <option value="SEPTEMBER">September</option>
+                            <option value="OCTOBER">October</option>
+                            <option value="NOVEMBER">November</option>
+                            <option value="DECEMBER">December</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>FY</label>
+                        <input type="text" th:field="*{FY}" class="form-control" placeholder="FY"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Invoice Status</label>
+                        <input type="text" th:field="*{inv_Status}" class="form-control" placeholder="Invoice Status"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Invoice F&A Submission Date</label>
+                        <div class="input-group">
+                            <input type="date" th:field="*{inv_FandA_Submission_date}" class="form-control" placeholder="Invoice F&A Submission Date"/>
+                            <!-- Display old date -->
+                            <div class="input-group-append">
+                                <span class="input-group-text">Old Date:</span>
+                                <input type="text" class="form-control" th:value="*{inv_FandA_Submission_date}" readonly/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Payment Date</label>
+                        <div class="input-group">
+                            <input type="date" th:field="*{payment_Date}" class="form-control" placeholder="Payment Date"/>
+                            <!-- Display old date -->
+                            <div class="input-group-append">
+                                <span class="input-group-text">Old Date:</span>
+                                <input type="text" class="form-control" th:value="*{payment_Date}" readonly/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>CMS</label>
+                        <input type="text" th:field="*{CMS}" class="form-control" placeholder="CMS"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Fin A/C Name</label>
+                        <input type="text" th:field="*{fin_AC_Name}" class="form-control" placeholder="Fin A/C Name"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Invoice Due Date</label>
+                        <div class="input-group">
+                            <input type="date" th:field="*{invoice_duedate}" class="form-control" placeholder="Invoice Due Date"/>
+                            <!-- Display old date -->
+                            <div class="input-group-append">
+                                <span class="input-group-text">Old Date:</span>
+                                <input type="text" class="form-control" th:value="*{invoice_duedate}" readonly/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add other fields as needed -->
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create New Invoice</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <a class="navbar-brand" href="#">Invoice Management System</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/invoices}">Invoice Management</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card">
+                <h1 class="card-header text-center">Create New Invoice</h1>
+                <div class="card-body">
+                    <form th:action="@{/api/v1/invoices}" th:object="${invoice}" method="post">
+                        <div class="form-group">
+                            <label>Invoice NO</label>
+                            <input type="number" class="form-control" th:field="*{invoice_NO}" placeholder="Enter Invoice NO">
+                        </div>
+                        <div class="form-group">
+                            <label>Invoice Date</label>
+                            <input type="date" class="form-control" th:field="*{invoice_Date}" placeholder="Enter Invoice Date">
+                        </div>
+                        <div class="form-group">
+                            <label>IT Department</label>
+                            <input type="text" class="form-control" th:field="*{IT_Department}" placeholder="Enter IT Department">
+                        </div>
+                        <div class="form-group">
+                            <label>Vendor</label>
+                            <input type="text" class="form-control" th:field="*{Vendor}" placeholder="Enter Vendor">
+                        </div>
+                        <div class="form-group">
+                            <label>Expense Type</label>
+                            <input type="text" class="form-control" th:field="*{Expense_Type}" placeholder="Enter Expense Type">
+                        </div>
+                        <div class="form-group">
+                            <label>No of Entries</label>
+                            <input type="number" class="form-control" th:field="*{No_of_Entries}" placeholder="Enter No of Entries">
+                        </div>
+                        <div class="form-group">
+                            <label>Product</label>
+                            <input type="text" class="form-control" th:field="*{Product}" placeholder="Enter Product">
+                        </div>
+                        <div class="form-group">
+                            <label>Fin A/C Name</label>
+                            <input type="text" class="form-control" th:field="*{Fin_AC_Name}" placeholder="Enter Fin A/C Name">
+                        </div>
+                        <div class="form-group">
+                            <label>Sub Product</label>
+                            <input type="text" class="form-control" th:field="*{Sub_Product}" placeholder="Enter Sub Product">
+                        </div>
+                        <div class="form-group">
+                            <label>BU Group</label>
+                            <input type="text" class="form-control" th:field="*{BU_Group}" placeholder="Enter BU Group">
+                        </div>
+                        <div class="form-group">
+                            <label>QTY</label>
+                            <input type="number" class="form-control" th:field="*{QTY}" placeholder="Enter QTY">
+                        </div>
+                        <div class="form-group">
+                            <label>Invoice Amount</label>
+                            <input type="number" class="form-control" th:field="*{Invoice_Amount}" placeholder="Enter Invoice Amount">
+                        </div>
+                        <div class="form-group">
+                            <label>GST</label>
+                            <input type="text" class="form-control" th:field="*{GST}" placeholder="Enter GST">
+                        </div>
+                        <div class="form-group">
+                            <label>Total Amount</label>
+                            <input type="number" class="form-control" th:field="*{Total_Amount}" placeholder="Enter Total Amount">
+                        </div>
+                        <div class="form-group">
+                            <label>Start Date</label>
+                            <input type="date" class="form-control" th:field="*{Start_Date}" placeholder="Enter Start Date">
+                        </div>
+                        <div class="form-group">
+                            <label>End Date</label>
+                            <input type="date" class="form-control" th:field="*{End_Date}" placeholder="Enter End Date">
+                        </div>
+                        <div class="form-group">
+                            <label>Allocated Location</label>
+                            <input type="text" class="form-control" th:field="*{Allocated_Location}" placeholder="Enter Allocated Location">
+                        </div>
+                        <div class="form-group">
+                            <label>OEM</label>
+                            <input type="text" class="form-control" th:field="*{OEM}" placeholder="Enter OEM">
+                        </div>
+                        <div class="form-group">
+                            <label>PO# (If Any)</label>
+                            <input type="text" class="form-control" th:field="*{PO_if_any}" placeholder="Enter PO# (If Any)">
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <input type="text" class="form-control" th:field="*{Description}" placeholder="Enter Description">
+                        </div>
+                        <div class="form-group">
+                            <label>Remarks (if any)</label>
+                            <input type="text" class="form-control" th:field="*{Remarks_if_any}" placeholder="Enter Remarks (if any)">
+                        </div>
+                        <div class="form-group">
+                            <label>Invoice Status</label>
+                            <input type="text" class="form-control" th:field="*{Inv_Status}" placeholder="Enter Invoice Status">
+                        </div>
+                        <div class="form-group">
+                            <label>Inv F&A Submission Date</label>
+                            <input type="date" class="form-control" th:field="*{Inv_FandA_Submission_date}" placeholder="Enter Inv F&A Submission Date">
+                        </div>
+                        <div class="form-group">
+                            <label>Payment Date</label>
+                            <input type="date" class="form-control" th:field="*{Payment_Date}" placeholder="Enter Payment Date">
+                        </div>
+                        <div class="form-group">
+                            <label>CMS</label>
+                            <input type="text" class="form-control" th:field="*{CMS}" placeholder="Enter CMS">
+                        </div>
+                        <div class="form-group">
+                            <label for="month">Month</label>
+                            <select id="month" th:field="*{month}" class="form-control">
+                                <option value="JANUARY">January</option>
+                                <option value="FEBRUARY">February</option>
+                                <option value="MARCH">March</option>
+                                <option value="APRIL">April</option>
+                                <option value="MAY">May</option>
+                                <option value="JUNE">June</option>
+                                <option value="JULY">July</option>
+                                <option value="AUGUST">August</option>
+                                <option value="SEPTEMBER">September</option>
+                                <option value="OCTOBER">October</option>
+                                <option value="NOVEMBER">November</option>
+                                <option value="DECEMBER">December</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Quarter</label>
+                            <input type="text" class="form-control" th:field="*{Quarter}" placeholder="Enter Quarter">
+                        </div>
+                        <div class="form-group">
+                            <label>FY</label>
+                            <input type="text" class="form-control" th:field="*{FY}" placeholder="Enter FY">
+                        </div>
+                        <div class="form-group">
+                            <label>System ID</label>
+                            <input type="text" class="form-control" th:field="*{system_id}" placeholder="Enter System ID">
+                        </div>
+                        <!-- Created_date_time and Last_updated should not be editable -->
+                        <!-- Duplicacy_Check is missing in the entity -->
+                        <!-- Last_updated is missing in the entity -->
+                    <!-- <div class="form-group">
+                            <label>Created Date Time</label>
+                            <input type="datetime-local" class="form-control" th:field="*{createdDateTime}" placeholder="Enter Created Date Time">
+                        </div>
+                        <div class="form-group">
+                            <label>Last Updated</label>
+                            <input type="datetime-local" class="form-control" th:field="*{lastUpdated}" placeholder="Enter Last Updated">
+                        </div> -->
+                        <div class="form-group">
+                            <label>Invoice Due Date</label>
+                            <input type="date" class="form-control" th:field="*{Invoice_duedate}" placeholder="Enter Invoice Due Date">
+                        </div>
+                        <div class="form-group">
+                            <label>SOF</label>
+                            <input type="text" class="form-control" th:field="*{SOF}" placeholder="Enter SOF">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Create Invoice</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2rXGnjp7x9uHphf6XTjbz2KRStJBfFXTy"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+</html>

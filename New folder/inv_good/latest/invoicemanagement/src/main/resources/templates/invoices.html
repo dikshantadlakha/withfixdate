@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List Invoices</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-3">
+            <a th:href="@{/api/v1/invoices/new}" class="btn btn-primary btn-sm mb-3">Add Invoice</a>
+        </div>
+    </div>
+    <h1>List Invoices</h1>
+
+    <table class="table table-striped">
+        <thead class="table-dark">
+        <tr>
+            <th>Invoice Date</th>
+            <th>Invoice Number</th>
+            <th>Department</th>
+            <th>Vendor</th>
+            <th>Amount</th>
+            <th>Month</th>
+            <th>FY</th>
+            <th>INV Status</th>
+            <th>Inv F&A Submission Date</th>
+            <th>Payment Date</th>
+            <th>CMS Number</th>
+            <th>Fin A/C</th>
+            <th>Due Date</th>
+            <th>Actions</th>
+           
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Iterate over invoices and display each row -->
+        <tr th:each="invoice : ${invoices}">
+            <td th:text="${invoice.invoice_Date}"></td>
+            <td th:text="${invoice.invoice_NO}"></td>
+            <td th:text="${invoice.iT_Department}"></td>
+            <td th:text="${invoice.Vendor}"></td>
+            <td th:text="${invoice.Invoice_Amount}"></td>
+            <td th:text="${invoice.Month}"></td>
+            <td th:text="${invoice.FY}"></td>
+            <td th:text="${invoice.Inv_Status}"></td>
+            <td th:text="${invoice.Inv_FandA_Submission_date}"></td>
+            <td th:text="${invoice.Payment_Date}"></td>
+            <td th:text="${invoice.CMS}"></td>
+            <td th:text="${invoice.Fin_AC_Name}"></td>
+            <td th:text="${invoice.Invoice_duedate}"></td>
+            <td>
+                <a th:href="@{/api/v1/invoices/edit/{id}(id=${invoice.id})}" class="btn btn-sm btn-info">Edit</a>
+                <!-- Add delete functionality if needed -->
+            </td>
+        </tr>
+        <!-- Handle case where no invoices are available -->
+        <tr th:if="${#lists.isEmpty(invoices)}">
+            <td colspan="14">No invoices found</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
